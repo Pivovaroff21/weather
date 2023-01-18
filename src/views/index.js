@@ -1,3 +1,3 @@
-export { default as PayCard } from "./PayCard.vue";
-export { default as PayPage } from "./PayPage.vue";
-export { default as FinalPage } from "./FinalPage.vue";
+export { default as Home } from "./Home.vue";
+export { default as CityInfo } from "./CityInfo.vue";
+

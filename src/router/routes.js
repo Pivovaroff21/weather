@@ -1,14 +1,10 @@
-import {PayCard,PayPage,FinalPage}  from "../Views"
+import {CityInfo,Home}  from "../Views"
 
 const routes = [
   { path: "/", component: PayPage },
   {
-    path: "/pay/card",
-    component: PayCard,
-  },
-  {
-    path: "/pay/final",
-    component: FinalPage,
+    path: "/city/info",
+    component: CityInfo,
   },
 ];
 

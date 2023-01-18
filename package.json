@@ -11,11 +11,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^1.2.3",
+    "reset-css": "^5.0.1",
     "vue": "^3.2.45",
+    "vue-axios": "^3.5.2",
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
     "css-loader": "^6.7.3",
+    "dotenv-webpack": "^8.0.1",
     "style-loader": "^3.3.1",
     "vue-loader": "^17.0.1",
     "vue-style-loader": "^4.1.3",

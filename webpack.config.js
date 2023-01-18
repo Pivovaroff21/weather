@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const Dotenv = require("dotenv-webpack");
 const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
@@ -47,5 +48,6 @@ module.exports = {
       __VUE_PROD_DEVTOOLS__: false,
     }),
     new VueLoaderPlugin(),
+    new Dotenv()
   ],
 };
