@@ -112,16 +112,16 @@ export default {
   },
 
   created() {
-    axios
-      .get(
-        `http://kursovoiproject/api/getOperators?auth=dIC349vWSpXx234NmQP21rvIeDd`
-      )
-      .then((response) => {
-        this.operators = response.data;
-      })
-      .catch((e) => {
-        alert(e);
-      });
+    // axios
+    //   .get(
+    //     `http://kursovoiproject/api/getOperators?auth=dIC349vWSpXx234NmQP21rvIeDd`
+    //   )
+    //   .then((response) => {
+    //     this.operators = response.data;
+    //   })
+    //   .catch((e) => {
+    //     alert(e);
+    //   });
   }
 }
 
