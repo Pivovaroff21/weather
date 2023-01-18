@@ -4,17 +4,18 @@ const API_KEY = process.env.API_KEY;
 const BASE_URL = process.env.BASE_URL;
 
 class api {
-  constructor(BASE_URL) {
-    this.baseUrl = BASE_URL;
+  constructor(url) {
+    this.baseUrl = url;
     this.customApi = this.createApi();
   }
 
   getWeatherInfo(currentCity) {
-    return Api.customApi("/getOperators", {
+    return Api.customApi("/weather", {
       method: "GET",
       params: {
-        "q": currentCity,
-        "appid":API_KEY
+        q: currentCity,
+        appid: API_KEY,
+        units:"metric"
       },
     });
   }

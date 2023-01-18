@@ -9,7 +9,7 @@
     <div>
       <h2>Вибір міста</h2>
       <select id="city-choose" v-model="currentCity">
-        <option v-for="item in cityList">{{ item.cityName }}</option>
+        <option v-for="item in cityList">{{ item }}</option>
       </select>
       <label for="city-choose">Оберіть місто</label>
       <router-link :to="'/weather/'+currentCity">
@@ -18,32 +18,25 @@
     </div>
   </div>
 
-
-
-
-
 </template>
 
 <script >
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: "CityInput",
+   props: {
+    cityList: {
+      type: Array,
+      require: true
+    }
+  },
   data() {
     return {
-      cityList:[],
       currentCity:'',
       newCity:''
     };
   },
-  mounted(){
-    this.getCityList();
-  },
    methods:{
-    getCityList(){
-      if(localStorage.getItem('cityList')){
-        this.cityList = JSON.parse(localStorage.getItem('cityList'));
-      }
-    },
     addNewCity(){
       this.cityList.push(this.newCity);
       try {
@@ -53,7 +46,6 @@ export default defineComponent({
           alert ('Перевищений ліміт');
         }
       }
-      this.getCityList();
     }
   }
 
