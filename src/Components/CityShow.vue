@@ -1,72 +1,31 @@
 <template>
 
 <div class="container">
-  <table>
-    <tr>
-      <td>{{ info.name }}</td>
-      <td>{{ sys.country }}</td>
-      <td>[{{ coord.lon }}];[{{ coord.lat }}]</td>
-    </tr>
-    <tr>
-      <td>
-
-      </td>
-      <td>
-        humidity
-      </td>
-      <td>
-        {{ main.humidity }}
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-
-      </td>
-      <td>
-        temp
-      </td>
-      <td>
-        {{ main.temp }}&#8451;
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-
-      </td>
-      <td>
-        main
-      </td>
-      <td>
-        {{ weather.main }}
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-
-      </td>
-      <td>
-        pressure
-      </td>
-      <td>
-        {{ main.pressure }}hpa
-      </td>
-    </tr>
-
-    <tr>
-      <td>
-
-      </td>
-      <td>
-        description
-      </td>
-      <td>
-        {{ weather.description }}
-      </td>
-    </tr>
-  </table>
+  <ul>
+    <li>{{ info.name }}</li>
+    <li>img</li>
+    <li>img</li>
+    <li>img</li>
+    <li>img</li>
+    <li>img</li>
+  </ul>
+  <ul>
+    <li>{{ sys.country }}</li>
+    <li>humidity</li>
+    <li>temp</li>
+    <li>main</li>
+    <li>pressure</li>
+    <li>description</li>
+  </ul>
+  <ul>
+  <!-- {{ info.coord }} -->
+    <li>[{{ coord.lon }}];[{{ coord.lat }}]</li>
+    <li>{{ main.humidity }}</li>
+    <li>{{ main.temp }}&#8451;</li>
+    <li>{{ weather.main }}</li>
+    <li>{{ main.pressure }}hpa</li>
+    <li>{{ weather.description }}</li>
+  </ul>
 </div>
 </template>
 
@@ -78,7 +37,7 @@ export default defineComponent({
   props: {
     item: {
       type: String,
-      require: true
+      require: false
     }
   },
   data() {
@@ -87,11 +46,12 @@ export default defineComponent({
       sys:{},
       weather:{},
       coord:{},
-      main:{}
+      main:{},
     };
   },
   mounted() {
-    Api.getWeatherInfo(this.item)
+    if(this.item){
+      Api.getWeatherInfo(this.item)
     .then((res)=>{
       console.log(res.data)
       this.info = res.data;
@@ -103,8 +63,10 @@ export default defineComponent({
     .catch((e)=>{
       alert(e);
     })
-  },
+    }
 
+
+  },
 });
 </script>
 
@@ -119,19 +81,12 @@ background: rgba(0, 0, 0, 0.3);
  margin:0 auto;
  margin-top:50px ;
  padding:50px 70px;
-}
-table{
-
-
- font-family:"Arial",serif ;
+ display: flex;
+ justify-content: space-between;
  color:#fff;
- font-size: 18px;
 }
-tr{
-  margin-bottom: 20px;
-}
-td{
-  width:173px;
+li{
+  margin-bottom:5px;
 }
 
 </style>

@@ -15,7 +15,19 @@ class api {
       params: {
         q: currentCity,
         appid: API_KEY,
-        units:"metric"
+        units: "metric",
+      },
+    });
+  }
+
+  getWeatherInfoByCoords(lat,lon) {
+    return Api.customApi("/weather", {
+      method: "GET",
+      params: {
+        lat,
+        lon,
+        appid: API_KEY,
+        units: "metric",
       },
     });
   }
