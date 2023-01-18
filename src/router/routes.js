@@ -1,10 +1,11 @@
 import {CityInfo,Home}  from "../Views"
 
 const routes = [
-  { path: "/", component: PayPage },
+  { path: "/", component: Home },
   {
-    path: "/city/info",
+    path: "/city/info/:city",
     component: CityInfo,
+    props:true
   },
 ];
 

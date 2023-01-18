@@ -2,19 +2,18 @@
   <div>
     <div>
       <h2>Додавання міста</h2>
-      <input type="text" id="city-name" placeholder="Введіть місто">
+      <input type="text" id="city-name" placeholder="Введіть місто" v-model="newCity">
       <label for="city-name">Введіть назву міста</label>
-      <button>Додати</button>
+      <button @click="addNewCity">Додати</button>
     </div>
     <div>
       <h2>Вибір міста</h2>
-      <input type="text" id="city-name" placeholder="Введіть місто">
       <select id="city-choose" v-model="currentCity">
         <option v-for="item in cityList">{{ item.cityName }}</option>
       </select>
       <label for="city-choose">Оберіть місто</label>
-      <router-link :to="'/student-info/'+currentCity">
-
+      <router-link :to="'/weather/'+currentCity">
+      Погода
       </router-link>
     </div>
   </div>
@@ -29,23 +28,33 @@
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: "CityInput",
-   components: {
-    StudentInput
-  },
-  props: {
-    item: {
-      type: Object,
-      require: true
-    }
-  },
-   data() {
+  data() {
     return {
-      cityList:{},
-      
+      cityList:[],
+      currentCity:'',
+      newCity:''
     };
   },
+  mounted(){
+    this.getCityList();
+  },
    methods:{
-
+    getCityList(){
+      if(localStorage.getItem('cityList')){
+        this.cityList = JSON.parse(localStorage.getItem('cityList'));
+      }
+    },
+    addNewCity(){
+      this.cityList.push(this.newCity);
+      try {
+        localStorage.setItem ('cityList', JSON.stringify(this.cityList));
+      }catch (e) {
+        if (e == QUOTA_EXCEEDED_ERR) {
+          alert ('Перевищений ліміт');
+        }
+      }
+      this.getCityList();
+    }
   }
 
 });
