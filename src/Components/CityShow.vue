@@ -3,15 +3,9 @@
 
   <table>
     <tr>
-      <td>
-        {{ info.name }}
-      </td>
-      <td>
-        {{ sys.country }}
-      </td>
-      <td>
-        [{{ coord.lon }}];[{{ coord.lat }}]
-      </td>
+      <td>{{ info.name }}</td>
+      <td>{{ sys.country }}</td>
+      <td>[{{ coord.lon }}];[{{ coord.lat }}]</td>
     </tr>
     <tr>
       <td>
@@ -45,7 +39,7 @@
         main
       </td>
       <td>
-        {{ weather.description }}
+        {{ weather.main }}
       </td>
     </tr>
 
@@ -55,6 +49,18 @@
       </td>
       <td>
         pressure
+      </td>
+      <td>
+        {{ main.pressure }}hpa
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+
+      </td>
+      <td>
+        description
       </td>
       <td>
         {{ weather.description }}
@@ -100,3 +106,6 @@ export default defineComponent({
 
 });
 </script>
+
+<style>
+</style>
