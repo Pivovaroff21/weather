@@ -1,6 +1,6 @@
 <template>
 
-
+<div class="container">
   <table>
     <tr>
       <td>{{ info.name }}</td>
@@ -67,6 +67,7 @@
       </td>
     </tr>
   </table>
+</div>
 </template>
 
 <script>
@@ -107,5 +108,30 @@ export default defineComponent({
 });
 </script>
 
-<style>
+<style scoped>
+
+*{
+  box-sizing:border-box;
+}
+.container{
+background: rgba(0, 0, 0, 0.3);
+ width: 720px;
+ margin:0 auto;
+ margin-top:50px ;
+ padding:50px 70px;
+}
+table{
+
+
+ font-family:"Arial",serif ;
+ color:#fff;
+ font-size: 18px;
+}
+tr{
+  margin-bottom: 20px;
+}
+td{
+  width:173px;
+}
+
 </style>
