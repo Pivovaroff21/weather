@@ -1,4 +1,22 @@
-const FinalPage = {
+<template>
+  <div class="wrapper">
+    <div class="transaction">
+      <div class="transactio_inner">
+        <h1 class="transaction_id">Транзакція #{{this.currentTransaction.id}} </h1>
+        <h2 class="transaction_text" v-if="this.currentTransaction.status === '1'" >Оплата проведена успішно</h2>
+          <h2 class="transaction_text_red " v-else>Оплата не пройшла, не вистачає коштів</h2>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+
+
+export default {
+  name:"PayCard",
+  components: {
+
+  },
   data() {
     return {
       currentTransaction: [],
@@ -19,15 +37,5 @@ const FinalPage = {
        });
 
   },
-  template: `
-      <div class="wrapper">
-        <div class="transaction">
-          <div class="transactio_inner">
-            <h1 class="transaction_id">Транзакція #{{this.currentTransaction.id}} </h1>
-            <h2 class="transaction_text" v-if="this.currentTransaction.status === '1'" >Оплата проведена успішно</h2>
-             <h2 class="transaction_text_red " v-else>Оплата не пройшла, не вистачає коштів</h2>
-          </div>
-        </div>
-      </div>
-       `,
-};
+}
+</script>

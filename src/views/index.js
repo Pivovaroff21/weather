@@ -1,2 +1,3 @@
-export { default as StudentInput } from "./StudentInput.vue";
-export { default as StudentShow } from "./StudentShow.vue";
+export { default as PayCard } from "./PayCard.vue";
+export { default as PayPage } from "./PayPage.vue";
+export { default as FinalPage } from "./FinalPage.vue";

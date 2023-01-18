@@ -1,12 +1,44 @@
+<template>
+  <div class="wrapper_form">
+    <div class="centered">
+        <form class="phone_form card_form" action="">
+            <label class="phone_form_text " for="">Введіть номер картки</label>
+            <input id="card_number" class="phone_form_input form_input_last" type="text" maxlength="16">
+            <label class="phone_form_text" for="">Введіть термін дії </label>
+            <input id ="card_date" @input="checkDate" class="phone_form_input form_input_last" type="text" maxlength="5">
+            <label class="phone_form_text" for="">Введіть CVV </label>
+            <input id ="card_cvv" class="phone_form_input form_input_last" type="text" maxlength="3">
+            <div class="error date_error"></div>
+          <button @click="checkData" class="tariff_link">
+              Оплатити
+            </button>
 
+        </form>
+      </div>
+      <div class="tip_block">
+        <div class="tips">
+          <p class="tips_text">Оплатити можна за 3 простих кроки:</p>
+          <ul class="tips_list">
+            <li class="tips_list_item">Введіть дані об оплаті;</li>
+            <li class="tips_list_item">Перевірте коректність даних;</li>
+            <li class="tips_list_item">Внесіть дані платіжної картки.</li>
+          </ul>
+        </div>
+        <div class="img_wrap">
+          <img src="https://ibox.ua/public/img/img_blog/image_mobile.svg" class="tip_block_pic"/>
+        </div>
+      </div>
+  </div>
 
+</template>
 
+<script>
 
+export default {
+  name:"PayCard",
+  components: {
 
-
-
-
-const PayCard = {
+  },
   data() {
     return {
       cards: [],
@@ -90,36 +122,6 @@ const PayCard = {
         this.errors.push(e);
       });
   },
-  template: `
-    <div class="wrapper_form">
-      <div class="centered">
-          <form class="phone_form card_form" action="">
-              <label class="phone_form_text " for="">Введіть номер картки</label>
-              <input id="card_number" class="phone_form_input form_input_last" type="text" maxlength="16">
-              <label class="phone_form_text" for="">Введіть термін дії </label>
-              <input id ="card_date" @input="checkDate" class="phone_form_input form_input_last" type="text" maxlength="5">
-              <label class="phone_form_text" for="">Введіть CVV </label>
-              <input id ="card_cvv" class="phone_form_input form_input_last" type="text" maxlength="3">
-              <div class="error date_error"></div>
-            <button @click="checkData" class="tariff_link">
-                Оплатити
-              </button>
+}
+</script>
 
-          </form>
-        </div>
-        <div class="tip_block">
-          <div class="tips">
-            <p class="tips_text">Оплатити можна за 3 простих кроки:</p>
-            <ul class="tips_list">
-              <li class="tips_list_item">Введіть дані об оплаті;</li>
-              <li class="tips_list_item">Перевірте коректність даних;</li>
-              <li class="tips_list_item">Внесіть дані платіжної картки.</li>
-            </ul>
-          </div>
-          <div class="img_wrap">
-            <img src="https://ibox.ua/public/img/img_blog/image_mobile.svg" class="tip_block_pic"/>
-          </div>
-        </div>
-      </div>
-       `,
-};
