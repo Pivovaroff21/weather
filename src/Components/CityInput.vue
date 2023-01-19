@@ -12,7 +12,7 @@
       <select id="city-choose" v-model="currentCity" class="data-input">
         <option v-for="item in cityList">{{ item }}</option>
       </select>
-      <router-link :to="'/weather/'+currentCity" class="blue-button">
+      <router-link :to="`/weather/${currentCity}`" class="blue-button">
       Погода
       </router-link>
     </div>

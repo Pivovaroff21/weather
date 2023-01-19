@@ -32,6 +32,7 @@ class api {
     });
   }
 
+  
   createApi() {
     const api = axios.create({
       baseURL: this.baseUrl,

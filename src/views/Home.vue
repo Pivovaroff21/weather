@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import { CityInput } from '../Components';
-import CityShow from '../Components/CityShow.vue';
+import { CityInput,CityShow } from '../Components';
 import { Api } from '../Api';
 
 export default{

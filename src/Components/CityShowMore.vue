@@ -2,29 +2,41 @@
 
 <div class="container">
   <ul>
-    <li>{{ info.name }}</li>
+    <li><img crossorigin="anonymous" :src="countryFlagImg"></li>
     <li><img src="../Assets/humidity.png"></li>
     <li><img src="../Assets/temperature.png"></li>
     <li><img src="../Assets/weather.png"></li>
     <li><img src="../Assets/pressure.png"></li>
     <li><img src="../Assets/description.png"></li>
+    <li><img src="../Assets/wind.png"></li>
+    <li><img src="../Assets/speed.png"></li>
   </ul>
   <ul>
-    <li>{{ sys.country }}</li>
+    <li>{{ info.name }}</li>
     <li>humidity</li>
-    <li>temp</li>
+    <li>temp/feels like</li>
     <li>main</li>
     <li>pressure</li>
     <li>description</li>
+    <li>wind deg</li>
+    <li>wind speed</li>
   </ul>
   <ul>
   <!-- {{ info.coord }} -->
-    <li>[{{ coord.lon }}];[{{ coord.lat }}]</li>
+    <li>{{ sys.country }}</li>
     <li>{{ main.humidity }}</li>
     <li>{{ main.temp }}&#8451;</li>
     <li>{{ weather.main }}</li>
     <li>{{ main.pressure }}hpa</li>
     <li>{{ weather.description }}</li>
+    <li>{{ wind.deg }}</li>
+    <li>{{ wind.speed }}</li>
+  </ul>
+  <ul>
+  <!-- {{ info.coord }} -->
+    <li>[{{ coord.lon }}];[{{ coord.lat }}]</li>
+    <li></li>
+    <li>{{ main.feels_like }}&#8451;</li>
   </ul>
 </div>
 
@@ -32,9 +44,10 @@
 
 <script>
 import {Api} from '../Api'
+import axios from 'axios';
 import { defineComponent } from 'vue';
 export default defineComponent({
-  name: "CityShow",
+  name: "CityShowMore",
   props: {
     item: {
       type: String,
@@ -48,6 +61,8 @@ export default defineComponent({
       weather:{},
       coord:{},
       main:{},
+      wind:{},
+      countryFlagImg:'',
     };
   },
   mounted() {
@@ -60,13 +75,13 @@ export default defineComponent({
       this.weather = res.data.weather[0];
       this.coord = res.data.coord;
       this.main = res.data.main;
+      this.wind = res.data.wind;
+      this.countryFlagImg = `https://countryflagsapi.com/png/${res.data.sys.country}`
     })
     .catch((e)=>{
       alert(e);
     })
     }
-
-
   },
 });
 </script>

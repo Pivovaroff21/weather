@@ -3,10 +3,9 @@ import {CityInfo,Home}  from "../Views"
 const routes = [
   { path: "/", component: Home },
   {
-    path: "/city/info/:city",
+    path: "/weather/:city",
     component: CityInfo,
-    props:true
+    props: true,
   },
 ];
-
 export{routes};
