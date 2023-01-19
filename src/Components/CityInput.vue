@@ -4,6 +4,7 @@
       <h2>Додавання міста</h2>
       <p>Введіть назву міста</p>
       <input type="text" id="city-name" placeholder="Введіть місто" v-model="newCity" class="data-input">
+      <p>{{ error }}</p>
       <button @click="addNewCity" class="blue-button">Додати</button>
     </div>
     <div class="item-container">
@@ -12,6 +13,7 @@
       <select id="city-choose" v-model="currentCity" class="data-input">
         <option v-for="item in cityList">{{ item }}</option>
       </select>
+      <p></p>
       <router-link :to="`/weather/${currentCity}`" class="blue-button">
       Погода
       </router-link>
@@ -22,6 +24,7 @@
 
 <script >
 import { defineComponent } from 'vue';
+ const cities = require("cities-list");
 export default defineComponent({
   name: "CityInput",
    props: {
@@ -33,18 +36,47 @@ export default defineComponent({
   data() {
     return {
       currentCity:'',
-      newCity:''
+      newCity:'',
+      allCities:[],
+      error:''
     };
+  },
+  mounted(){
+
+
   },
    methods:{
     addNewCity(){
-      this.cityList.push(this.newCity);
+      if(this.isExists()){
+        if(!this.$parent.cityList.includes(this.newCity)){
+          this.cityList.push(this.newCity);
+        this.newCity="";
+        this.error="";
+        }else{
+          this.error="Місто вже існує";
+        }
       try {
         localStorage.setItem ('cityList', JSON.stringify(this.cityList));
       }catch (e) {
         if (e == QUOTA_EXCEEDED_ERR) {
           alert ('Перевищений ліміт');
         }
+      }
+      }
+
+    },
+    isExists(){
+      this.allCities = Object.keys(cities);
+      this.allCities = this.allCities.map(item=>item.toLowerCase());
+      if(this.allCities.includes(this.newCity.toLowerCase())){
+        console.log("ok")
+        this.error = ""
+        return true
+      }else if(!this.newCity){
+        this.error = ""
+      }else{
+        this.error="Такого міста не існує"
+        return false
       }
     }
   }

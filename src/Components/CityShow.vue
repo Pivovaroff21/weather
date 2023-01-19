@@ -54,7 +54,6 @@ export default defineComponent({
     if(this.item){
       Api.getWeatherInfo(this.item)
     .then((res)=>{
-      console.log(res.data)
       this.info = res.data;
       this.sys = res.data.sys;
       this.weather = res.data.weather[0];
