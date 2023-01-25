@@ -1,4 +1,4 @@
-import {CityInfo,Home}  from "../Views"
+import { CityInfo , Home, Page404 }  from "../views"
 
 const routes = [
   { path: "/", component: Home },
@@ -7,5 +7,10 @@ const routes = [
     component: CityInfo,
     props: true,
   },
+  {
+    path:"/:catchAll(.*)",
+    component:Page404,
+    hidden:true,
+  }
 ];
 export{routes};
