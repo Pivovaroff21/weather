@@ -43,8 +43,7 @@
 </template>
 
 <script>
-import {Api} from '../Api'
-import axios from 'axios';
+import {api} from '../Api'
 import { defineComponent } from 'vue';
 export default defineComponent({
   name: "CityShowMore",
@@ -66,10 +65,12 @@ export default defineComponent({
     };
   },
   mounted() {
+
+
+
     if(this.item){
-      Api.getWeatherInfo(this.item)
+      api.getData({city:this.item})
     .then((res)=>{
-      console.log(res.data)
       this.info = res.data;
       this.sys = res.data.sys;
       this.weather = res.data.weather[0];

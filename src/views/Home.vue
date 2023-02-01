@@ -6,7 +6,7 @@
 
 <script>
 import { CityInput,CityShow } from '../Components';
-import { Api } from '../Api';
+import { api } from '../Api';
 
 export default{
   name:"Home",
@@ -21,17 +21,23 @@ export default{
     }
   },
   mounted(){
+
     this.getCityList();
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position)=>{
-        Api.getWeatherInfoByCoords(position.coords.latitude,position.coords.longitude)
-      .then((res)=>{
-      this.currentPositionCity = res.data.name;
-    })
-    .catch((e)=>{
-      alert(e);
-    })
+
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        api.getData({lat,lon})
+        .then((res)=>{
+          this.currentPositionCity = res.data.name;
+        })
+
+        .catch((e)=>{
+          alert(e);
+        })
       })
     }
   },
