@@ -71,16 +71,16 @@ export default defineComponent({
     if(this.item){
       api.getData({city:this.item})
     .then((res)=>{
-      this.info = res.data;
-      this.sys = res.data.sys;
-      this.weather = res.data.weather[0];
-      this.coord = res.data.coord;
-      this.main = res.data.main;
-      this.wind = res.data.wind;
-      this.countryFlagImg = `https://countryflagsapi.com/png/${res.data.sys.country}`
+      this.info = res;
+      this.sys = res.sys;
+      this.weather = res.weather[0];
+      this.coord = res.coord;
+      this.main = res.main;
+      this.wind = res.wind;
+      this.countryFlagImg = `https://countryflagsapi.com/png/${res.sys.country}`
     })
     .catch((e)=>{
-      alert(e);
+      console.log(e);
     })
     }
   },

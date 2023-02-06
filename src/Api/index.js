@@ -6,30 +6,33 @@ const BASE_URL = process.env.BASE_URL;
 class Api {
   constructor(url) {
     this.baseUrl = url;
-    this.customApi = this.createApi();
   }
 
-  getData({city,lat,lon}) {
+  async getData({city,lat,lon}) {
 
-    return this.customApi("/weather", {
-      method: "GET",
-      params: {
-        q:city,
-        lat,
-        lon,
-        appid: API_KEY,
-        units: "metric",
-      },
-    });
+    try{
+
+      const res = await axios.get(`${this.baseUrl}/weather`, {
+        params: {
+          q:city,
+          lat,
+          lon,
+          appid: API_KEY,
+          units: "metric",
+        },
+      });
+
+      return res.data;
+
+    }catch(err){
+      console.log(err);
+      return Promise.reject(err);
+    }
+
+
+
   }
 
-  createApi() {
-    const api = axios.create({
-      baseURL: this.baseUrl,
-    });
-
-    return api;
-  }
 }
 const api = new Api(BASE_URL);
 export { api };

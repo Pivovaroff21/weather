@@ -51,18 +51,21 @@ export default defineComponent({
     };
   },
   mounted() {
+
     if(this.item){
+
       api.getData({city:this.item})
-    .then((res)=>{
-      this.info = res.data;
-      this.sys = res.data.sys;
-      this.weather = res.data.weather[0];
-      this.coord = res.data.coord;
-      this.main = res.data.main;
-    })
-    .catch((e)=>{
-      alert(e);
-    })
+      .then((res)=>{
+
+        this.info = res;
+        this.sys = res.sys;
+        this.weather = res.weather[0];
+        this.coord = res.coord;
+        this.main = res.main;
+      })
+      .catch((e)=>{
+        console.log(e);
+      })
     }
 
 

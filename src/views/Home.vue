@@ -32,7 +32,7 @@ export default{
 
         api.getData({lat,lon})
         .then((res)=>{
-          this.currentPositionCity = res.data.name;
+          this.currentPositionCity = res.name;
         })
 
         .catch((e)=>{
