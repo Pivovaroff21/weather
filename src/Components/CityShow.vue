@@ -56,7 +56,6 @@ export default defineComponent({
 
       api.getData({city:this.item})
       .then((res)=>{
-
         this.info = res;
         this.sys = res.sys;
         this.weather = res.weather[0];
@@ -64,6 +63,7 @@ export default defineComponent({
         this.main = res.main;
       })
       .catch((e)=>{
+        // TODO - show some info for user in this case
         console.log(e);
       })
     }
